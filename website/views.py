@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import Post, Perfil
+from .models import Post, Perfil, Contact
 
 
 def blog(request):
@@ -31,3 +31,14 @@ def post_detail(request, id):
     return render(request, 'post_detail.html', data)
 
 
+def save_form(request):
+    name = request.POST['name']
+    Contact.objects.create(
+        name=name,
+        nrTelCelular=request.POST['fone'],
+        email=request.POST['email'],
+        message=request.POST['message'],
+
+    )
+
+    return render(request, 'contact_sucess.html', {'name_contact': name})

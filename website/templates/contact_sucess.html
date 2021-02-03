@@ -1,0 +1,21 @@
+
+{% load static %}
+
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Drª Carol Duarte</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+	</head>
+
+
+    <h1>Obrigada {{ name_contact }}, seu contato foi recebido </h1>
+    <ul class="actions">
+        <li><a href="{% url 'home_blog' %}" class="button">voltar</a></li>
+    </ul>
+
+
+</html>

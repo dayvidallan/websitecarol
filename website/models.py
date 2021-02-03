@@ -5,7 +5,11 @@ from ckeditor.fields import RichTextField
 class Contact(models.Model):
     name = models.CharField(max_length=200)
     email = models.EmailField()
+    nrTelCelular = models.CharField(max_length=11, blank=True, null=True, verbose_name='Nº telefone celular')
     message = models.TextField()
+
+    def __str__(self):
+        return self.name
 
 
 class Post(models.Model):
@@ -23,6 +27,7 @@ class Perfil(models.Model):
     name = models.CharField(max_length=200, null=True, blank=True)
     especialidade = models.CharField(max_length=200, null=True, blank=True)
     texto = RichTextField(null=True, blank=True)
+    apresent = models.TextField(null=True, blank=True)
     nrTelCelular = models.CharField(max_length=11, blank=True, null=True, verbose_name='Nº telefone celular')
     imagem = models.ImageField(upload_to='perfils', null=True, blank=True)
 

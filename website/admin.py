@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Perfil
+from .models import Post, Perfil, Contact
 
 class PostAdmin(admin.ModelAdmin):
     list_display = ['title', 'sub_title']
@@ -13,8 +13,14 @@ class PostAdmin(admin.ModelAdmin):
 
 class PerfilAdmin(admin.ModelAdmin):
     list_display = ['name', 'especialidade', 'nrTelCelular', 'texto']
-    search_fields = ['name', 'especialidade','nrTelCelular', 'texto']
+    search_fields = ['name', 'especialidade', 'nrTelCelular', 'texto']
+
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ['name', 'email', 'nrTelCelular']
+    search_fields = ['name', 'email', 'nrTelCelular']
 
 admin.site.register(Post, PostAdmin)
 admin.site.register(Perfil, PerfilAdmin)
+admin.site.register(Contact, ContactAdmin)
+
 
