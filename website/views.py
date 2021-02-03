@@ -1,25 +1,33 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import Post
+from .models import Post, Perfil
 
 
 def blog(request):
-    lista = [
-        'Django', 'Python', 'git', 'Html'
-    ]
 
     list_posts = Post.objects.filter(deleted=False)
 
-    data = {'name': 'site_carol',
-            'lista_tecnologias': lista,
-            'posts': list_posts
+    meu_perfil = Perfil.objects.all()
+
+    data = {
+            'posts': list_posts,
+            'perfil': meu_perfil,
             }
 
     return render(request, 'index.html', data)
 
+
 def post_detail(request, id):
+
     post = Post.objects.get(id=id)
-    return render(request, 'post_detail.html', {'post': post})
+
+    meu_perfil = Perfil.objects.all()
+
+    data = {
+        'post': post,
+        'perfil': meu_perfil,
+    }
+    return render(request, 'post_detail.html', data)
 
 

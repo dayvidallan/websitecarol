@@ -14,10 +14,14 @@
 		<!-- Header -->
 			<header id="header">
 				<div class="inner">
-					<a href="#" class="image avatar"><img src="{% static 'images/avatar.jpg' %}" alt="" /></a>
-					<h1><strong>Drª Carol Duarte Odontopediatra</strong>, <h4>Especialista em cuidar do sorriso da sua família</h4><br />
-					<br />
-					</a></h1>
+					{% for perfil in perfil %}
+						<a href="#" class="image avatar"><img src="{{ perfil.imagem.url }}" alt="" /></a>
+						<h1><strong>Drª {{ perfil.name }} - {{ perfil.especialidade }}</strong>
+						<br />
+					{% endfor %}
+						</a></h1>
+
+
 				</div>
 			</header>
 
@@ -33,7 +37,7 @@
 
 						<article class="col-6 col-12-xsmall work-item">
 							<a href="{{ post.imagem.url }}" class="image fit thumb"><img
-									src="{{ post.imagem.url }}" alt="" /></a>
+								src="{{ post.imagem.url }}" alt="" /></a>
 
 						</article>
 						   <p>{{ post.content }}</p>
