@@ -14,14 +14,14 @@
 		<!-- Header -->
 			<header id="header">
 				<div class="inner">
-
+					{% for perfil in perfil %}
 						<a href="{{ perfil.imagem.url }}" class="image avatar"><img src="{{ perfil.imagem.url }}" alt="" /></a>
-							{% for perfil in perfil %}
+
 								<h1><strong>Drª {{ perfil.name }} - {{ perfil.especialidade }}</strong>
-							{% endfor %}
+
 						<br />
 						</a></h1>
-
+					{% endfor %}
 				</div>
 			</header>
 
