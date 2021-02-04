@@ -1,16 +1,16 @@
 import os
 from pathlib import Path
 from decouple import config
-from dj_database_url import parse as dburl
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', default=False, cast=bool)
+SECRET_KEY = '9tkr7n$#xghgr*+-$w_%3ucsg-=fxe7!3q6z@eigvl2ncqrb$v'
 
 
-ALLOWED_HOSTS = ['localhost', 'drcarol.herokuapp.com']
+DEBUG = True
+
+ALLOWED_HOSTS = ['localhost', 'drcarol.heroku.com']
 
 
 INSTALLED_APPS = [
@@ -90,7 +90,7 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
