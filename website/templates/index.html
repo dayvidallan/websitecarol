@@ -13,12 +13,13 @@
 
 		<!-- Header -->
 			<header id="header">
-				{% for perfil in perfil %}
 				<div class="inner">
-					<a href="{{ perfil.imagem.url }}" class="image avatar"><img src="{{ perfil.imagem.url }}" alt="" /></a>
-						<h1><strong>Drª {{ perfil.name }} - {{ perfil.especialidade }}</strong>
-						<br />
-					</a></h1>
+					{% for perfil in perfil %}
+						<a href="{{ perfil.imagem.url }}" class="image avatar"><img src="{{ perfil.imagem.url }}" alt="" /></a>
+							<h1><strong>Drª {{ perfil.name }} - {{ perfil.especialidade }}</strong>
+							<br />
+						</a></h1>
+					{% endfor %}
 				</div>
 			</header>
 
@@ -28,13 +29,17 @@
 				<!-- One -->
 					<section id="one">
 						<header class="major">
-							<h2>Drª {{ perfil.name }}<br />
-							{{ perfil.texto }}</h2>
+							{% for perfil in perfil %}
+								<h2>Drª {{ perfil.name }}<br />
+								{{ perfil.texto }}</h2>
+							{% endfor %}
 						</header>
-						<p>{{ perfil.apresent }}</p>
+						{% for perfil in perfil %}
+							<p>{{ perfil.apresent }}</p>
+						{% endfor %}
 
 					</section>
-				{% endfor %}
+
 				<!-- Two -->
 					<section id="two">
 						<h2>Posts</h2>
