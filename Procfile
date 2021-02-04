@@ -1,1 +1,1 @@
-web:gunicorn site_carol.wsgi
+web: gunicorn site_carol.wsgi
