@@ -3,9 +3,8 @@
 <!DOCTYPE HTML>
 
 <html>
-{% for perfil in perfil %}
 	<head>
-		<title>Drª {{ perfil.name }}</title>
+		<title>Drª Carol Duarte</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
@@ -14,6 +13,7 @@
 
 		<!-- Header -->
 			<header id="header">
+				{% for perfil in perfil %}
 				<div class="inner">
 					<a href="{{ perfil.imagem.url }}" class="image avatar"><img src="{{ perfil.imagem.url }}" alt="" /></a>
 						<h1><strong>Drª {{ perfil.name }} - {{ perfil.especialidade }}</strong>
@@ -34,7 +34,7 @@
 						<p>{{ perfil.apresent }}</p>
 
 					</section>
-{% endfor %}
+				{% endfor %}
 				<!-- Two -->
 					<section id="two">
 						<h2>Posts</h2>
