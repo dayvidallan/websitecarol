@@ -1,15 +1,16 @@
 import os
 from pathlib import Path
+from decouple import config
+from dj_database_url import parse as dburl
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-SECRET_KEY = '9tkr7n$#xghgr*+-$w_%3ucsg-=fxe7!3q6z@eigvl2ncqrb$v'
+SECRET_KEY = config('SECRET_KEY')
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 
-DEBUG = True
-
-ALLOWED_HOSTS = ['localhost', '34.67.161.90']
+ALLOWED_HOSTS = ['localhost', 'drcarol.herokuapp.com']
 
 
 INSTALLED_APPS = [
@@ -58,12 +59,9 @@ TEMPLATES = [
 WSGI_APPLICATION = 'site_carol.wsgi.application'
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
+
+DATABASES = { 'default': config('DATABASE_URL', default=default_dburl, cast=dburl), }
 
 
 AUTH_PASSWORD_VALIDATORS = [
