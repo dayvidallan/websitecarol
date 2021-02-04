@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 from decouple import config
+from dj_database_url import parse as dburl
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -10,7 +11,7 @@ SECRET_KEY = '9tkr7n$#xghgr*+-$w_%3ucsg-=fxe7!3q6z@eigvl2ncqrb$v'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'drcarol.heroku.com']
+ALLOWED_HOSTS = ['localhost', 'drcarol.herokuapp.com']
 
 
 INSTALLED_APPS = [
