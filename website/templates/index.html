@@ -46,24 +46,17 @@
 					<section id="two">
 						<h2>Posts</h2>
 						<div class="row">
-                             {% for post in posts %}
+                            {% for post in posts %}
                                 <article class="col-6 col-12-xsmall work-item">
-									{% if post.imagem %}
-										<img src="{{ post.imagem.url }}" alt="" width="250px" height="100px"/>
-									{% else %}
-										<a href="{% static 'images/fulls/01.jpg' %}" class="image fit thumb">
-										<img src="{% static 'images/thumbs/01.jpg' %}" alt="" /></a>
-									{% endif %}
-
-                                    <h3>{{ post.title }}</h3>
-                                    <p>{{ post.sub_title }}</p>
-                                    <span>{{ post.get_categoty_label }}</span>
-                                    <ul class="actions">
-                                        <li><a href="{% url 'post_detail' post.id %}" class="button">Read more</a></li>
-                                    </ul>
-                                </article>
-							{% endfor %}
-
+									<img class="image fit thumb"
+											src="{{ post.imagem.url }}" alt="" />
+									<h3>{{ post.title }}</h3>
+									<p>{{ post.sub_title }}</p>
+									<ul class="actions">
+										<li><a href="{% url 'post_detail' post.id %}" class="button">Leia Mais</a></li>
+									</ul>
+								</article>
+                            {% endfor %}
 						</div>
 
 					</section>
