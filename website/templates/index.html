@@ -1,64 +1,39 @@
-{% load static %}
-
-<!DOCTYPE HTML>
-
-<html>
-	<head>
-		<title>Drª Carol Duarte</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
-	</head>
-	<body class="is-preload">
-
-		<!-- Header -->
-			<header id="header">
-				<div class="inner">
-						{% for perfil in perfil %}
-							<img class="image avatar" src="{{ perfil.imagem.url }}" alt="" />
-						{% endfor %}
-						{% for perfil in perfil %}
-							<h1><strong>Drª {{ perfil.name }} - {{ perfil.especialidade }}</strong>
-						{% endfor %}
-						<br />
-						</h1>
-				</div>
-			</header>
+{% extends 'base.html' %}
+{% block content %}
 
 		<!-- Main -->
 			<div id="main">
+				{% for perfil in perfil %}
 
 				<!-- One -->
 					<section id="one">
 						<header class="major">
-							{% for perfil in perfil %}
-								<h2>Drª {{ perfil.name }}<br />
-								{{ perfil.texto }}</h2>
-							{% endfor %}
+							<h2>Drª {{ perfil.name }}<br />
+							{{ perfil.texto }}</h2>
 						</header>
-						{% for perfil in perfil %}
-							<p>{{ perfil.apresent }}</p>
-						{% endfor %}
+						<p>{{ perfil.apresent }}</p>
 
 					</section>
+				{% endfor %}
 
 				<!-- Two -->
 					<section id="two">
-						<h2>Posts</h2>
+						<h2>Postagens</h2>
 						<div class="row">
-                            {% for post in posts %}
-                                <article class="col-6 col-12-xsmall work-item">
-									<img class="image fit thumb"
-											src="{{ post.imagem.url }}" alt="" />
+							{% for post in posts %}
+								<article class="col-6 col-12-xsmall work-item">
+									<a href="{{ post.imagem.url }}" class="image fit thumb"><img
+											src="{{ post.imagem.url }}" alt="" /></a>
 									<h3>{{ post.title }}</h3>
 									<p>{{ post.sub_title }}</p>
+
 									<ul class="actions">
 										<li><a href="{% url 'post_detail' post.id %}" class="button">Leia Mais</a></li>
 									</ul>
 								</article>
-                            {% endfor %}
-						</div>
+							{% endfor %}
 
+						</div>
 					</section>
 
 				<!-- Three -->
@@ -75,55 +50,39 @@
 										<div class="col-12"><textarea name="message" id="message" placeholder="Como podemos ajudar?" rows="4"></textarea></div>
 									</div>
 									<br>
-									<br>
-									<input type="submit" value="Enviar" />
+									<ul class="actions">
+										<li><input type="submit" value="Enviar" /></li>
+									</ul>
 								</form>
 
 							</div>
 							<div class="col-4 col-12-small">
-								<ul class="labeled-icons">
-									<li>
-										<h3 class="icon solid fa-home"><span class="label">Address</span></h3>
-										1234 Somewhere Rd.<br />
-										Nashville, TN 00000<br />
-										United States
-									</li>
-									<li>
-										<h3 class="icon solid fa-mobile-alt"><span class="label">Phone</span></h3>
-										000-000-0000
-									</li>
-									<li>
-										<h3 class="icon solid fa-envelope"><span class="label">Email</span></h3>
-										<a href="#">hello@untitled.tld</a>
-									</li>
-								</ul>
+								{% for perfil in perfil %}
+									<ul class="labeled-icons">
+										<li>
+											<h3 class="icon solid fa-home"><span class="label">Address</span></h3>
+											{{perfil.endereco}}<br />
+											{{perfil.bairro}}<br />
+											{{perfil.cidade}}/{{perfil.estado}}
+										</li>
+										<li>
+											<h3 class="icon solid fa-mobile-alt"><span class="label">Phone</span></h3>
+											<li><a href="https://wa.me/message/O243K5ANNTQ4J1" target="_blank"  ><span class="label" >{{perfil.nrTelCelular}}</span></a></li>
+
+										</li>
+										<li>
+											<h3 class="icon solid fa-envelope"><span class="label">Email</span></h3>
+											<a href="#">{{perfil.email}}</a>
+										</li>
+									</ul>
+								{% endfor %}
 							</div>
 						</div>
 					</section>
+
 			</div>
 
-		<!-- Footer -->
-			<footer id="footer">
-				<div class="inner">
-					<ul class="icons">
-						<li><a href="https://www.facebook.com/dracarolduarte-101681791939478/" target="_blank" class="icon brands fa-facebook" ><span class="label">Facebook</span></a></li>
-						<li><a href="https://wa.me/message/O243K5ANNTQ4J1" target="_blank"  class="icon brands fa-whatsapp"><span class="label" >Whatsapp</span></a></li>
-						<li><a href="https://www.instagram.com/dra.carolduarte/" target="_blank" class="icon brands fa-instagram"><span class="label">instagram</span></a></li>
-						<li><a href="#" target="_blank" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-					</ul>
-					<ul class="copyright">
-						<li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
-				</div>
-			</footer>
-
-		<!-- Scripts -->
-			<script src="{% static 'assets/js/jquery.min.js' %}"></script>
-			<script src="{% static 'assets/js/jquery.poptrox.min.js' %}"></script>
-			<script src="{% static 'assets/js/browser.min.js' %}"></script>
-			<script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
-			<script src="{% static 'assets/js/util.js' %}"></script>
-			<script src="{% static 'assets/js/main.js' %}"></script>
-
-	</body>
 </html>
+
+
+{% endblock %}
