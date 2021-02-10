@@ -1,9 +1,7 @@
 import os
-from pathlib import Path
-from decouple import config
-from dj_database_url import parse as dburl
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 SECRET_KEY = '9tkr7n$#xghgr*+-$w_%3ucsg-=fxe7!3q6z@eigvl2ncqrb$v'
@@ -60,9 +58,12 @@ TEMPLATES = [
 WSGI_APPLICATION = 'site_carol.wsgi.application'
 
 
-default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
-
-DATABASES = { 'default': config('DATABASE_URL', default=default_dburl, cast=dburl), }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
 
 AUTH_PASSWORD_VALIDATORS = [
