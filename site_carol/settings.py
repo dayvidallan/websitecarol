@@ -9,7 +9,7 @@ SECRET_KEY = '9tkr7n$#xghgr*+-$w_%3ucsg-=fxe7!3q6z@eigvl2ncqrb$v'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'drcarol.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '34.67.161.90']
 
 
 INSTALLED_APPS = [
